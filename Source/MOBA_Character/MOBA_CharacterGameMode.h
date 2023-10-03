@@ -12,6 +12,7 @@ class AMOBA_CharacterGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
+
 	AMOBA_CharacterGameMode();
 };
 
