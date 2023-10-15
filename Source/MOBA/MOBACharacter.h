@@ -14,7 +14,7 @@ class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
 
-UCLASS(config=Game)
+UCLASS(config = Game)
 class AMOBACharacter : public ACharacter
 {
 	GENERATED_BODY()

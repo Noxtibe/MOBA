@@ -1,29 +1,37 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "MOBA_Character.generated.h"
 
+class USkeletalMeshComponent;
+class USceneComponent;
+class UCameraComponent;
+class UAnimMontage;
+class USoundBase;
+
 UCLASS()
 class MOBA_API AMOBA_Character : public ACharacter
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
+
+    /** Pawn mesh: 1st person view (arms; seen only by self) */
+    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+    USkeletalMeshComponent* Mesh1P;
+
+    /** First person camera */
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+    UCameraComponent* FirstPersonCameraComponent;
 
 public:
-	// Sets default values for this character's properties
-	AMOBA_Character();
+
+    AMOBA_Character();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    virtual void BeginPlay() override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+public:
 
+    /** Returns Mesh1P subobject **/
+    USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 };
