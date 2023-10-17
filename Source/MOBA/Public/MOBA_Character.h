@@ -1,13 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InputActionValue.h"
 #include "MOBA_Character.generated.h"
 
+class UInputComponent;
 class USkeletalMeshComponent;
 class USceneComponent;
 class UCameraComponent;
-class UAnimMontage;
-class USoundBase;
+
 
 UCLASS()
 class MOBA_API AMOBA_Character : public ACharacter
@@ -26,12 +27,13 @@ public:
 
     AMOBA_Character();
 
+    virtual void Tick(float DeltaTime) override;
+
+    // DEFAULT MOVEMENTS
+    void Move(const FInputActionValue& Value);
+    void Look(const FInputActionValue& Value);
+
 protected:
 
     virtual void BeginPlay() override;
-
-public:
-
-    /** Returns Mesh1P subobject **/
-    USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 };

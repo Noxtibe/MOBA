@@ -13,43 +13,30 @@ class MOBA_API AMOBA_PlayerController : public APlayerController
 
 public:
 
-    AMOBA_PlayerController();
+    // Default Mapping
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    UInputMappingContext* DefaultMappingContext;
+
+    // ACTIONS //
+
+    // MOVE
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    class UInputAction* MoveAction;
+
+    // LOOK WITH MOUSE
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    class UInputAction* LookAction;
+
+    // JUMP
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    class UInputAction* JumpAction;
 
 protected:
 
     virtual void BeginPlay();
-    virtual void SetupInputComponent() override;
-    // Déclaration de la fonction pour ajouter le mappage contextuel
-    void AddMappingContext();
 
-public:
+private:
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputAction* MoveForwardAction;  // Référence à l'action MoveForward
+    class AMOBA_Character* character;
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputAction* MoveRightAction;    // Référence à l'action MoveRight
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputAction* TurnAction;         // Référence à l'action Turn
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputAction* LookUpAction;       // Référence à l'action LookUp
-
-    // Déclaration de votre action de mappage contextuel
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputMappingContext* MOBA_DefaultMappingContext;
-
-    /** Action d'entrée pour le débogage */
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-    UInputAction* DebugAction;
-
-
-    void MoveForward(const FInputActionValue& Value);
-    void MoveRight(const FInputActionValue& Value);
-    void Turn(const FInputActionValue& Value);
-    void LookUp(const FInputActionValue& Value);
-
-    // Déclaration de la fonction de débogage
-    void DebugKeyPressed(const FInputActionValue& Value);
 };
