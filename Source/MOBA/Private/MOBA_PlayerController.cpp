@@ -22,5 +22,12 @@ void AMOBA_PlayerController::BeginPlay()
         // Jumping
         EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, character, &ACharacter::Jump);
         EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, character, &ACharacter::StopJumping);
+
+        // Abilities
+        EnhancedInputComponent->BindAction(AAAction, ETriggerEvent::Triggered, character, &AMOBA_Character::AutoAttack);
+        EnhancedInputComponent->BindAction(Capacity1Action, ETriggerEvent::Completed, character, &AMOBA_Character::Capacity1);
+        EnhancedInputComponent->BindAction(Capacity2Action, ETriggerEvent::Triggered, character, &AMOBA_Character::Capacity2);
+        EnhancedInputComponent->BindAction(Capacity3Action, ETriggerEvent::Completed, character, &AMOBA_Character::Capacity3);
+        EnhancedInputComponent->BindAction(Capacity4Action, ETriggerEvent::Triggered, character, &AMOBA_Character::Capacity4);
     }
 }

@@ -37,6 +37,12 @@ public:
     void Move(const FInputActionValue& Value);
     void Look(const FInputActionValue& Value);
 
+    void AutoAttack();
+    void Capacity1();
+    void Capacity2();
+    void Capacity3();
+    void Capacity4();
+
 private:
 
     // HUD

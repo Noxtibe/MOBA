@@ -83,3 +83,28 @@ void AMOBA_Character::Look(const FInputActionValue& Value)
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
 }
+
+void AMOBA_Character::AutoAttack()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Auto Attack"));
+}
+
+void AMOBA_Character::Capacity1()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Capacity 1"));
+}
+
+void AMOBA_Character::Capacity2()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Capacity 2"));
+}
+
+void AMOBA_Character::Capacity3()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Capacity 3"));
+}
+
+void AMOBA_Character::Capacity4()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Magenta, TEXT("Capacity 4"));
+}
