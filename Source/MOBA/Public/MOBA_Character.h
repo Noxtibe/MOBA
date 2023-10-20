@@ -22,7 +22,6 @@ class MOBA_API AMOBA_Character : public ACharacter
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
     UCameraComponent* FirstPersonCameraComponent;
 
-
 public:
 
     AMOBA_Character();
