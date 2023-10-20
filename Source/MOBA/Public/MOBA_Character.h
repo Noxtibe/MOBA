@@ -9,7 +9,6 @@ class USkeletalMeshComponent;
 class USceneComponent;
 class UCameraComponent;
 
-
 UCLASS()
 class MOBA_API AMOBA_Character : public ACharacter
 {
@@ -19,21 +18,32 @@ class MOBA_API AMOBA_Character : public ACharacter
     UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
     USkeletalMeshComponent* Mesh1P;
 
-    /** First person camera */
+    // FPS CAMERA
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
     UCameraComponent* FirstPersonCameraComponent;
+
 
 public:
 
     AMOBA_Character();
 
+    virtual void BeginPlay() override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
     virtual void Tick(float DeltaTime) override;
 
     // DEFAULT MOVEMENTS
+
     void Move(const FInputActionValue& Value);
     void Look(const FInputActionValue& Value);
 
-protected:
+private:
 
-    virtual void BeginPlay() override;
+    // HUD
+
+    UPROPERTY(EditAnywhere)
+    TSubclassOf<class UMOBA_DefaultWidget> PlayerHUDClass;
+
+    UPROPERTY()
+    class UMOBA_DefaultWidget* PlayerHUD;
 };

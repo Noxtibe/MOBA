@@ -1,5 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MOBA_HUD.h"
+#include "Blueprint/UserWidget.h"
 
+AMOBA_HUD::AMOBA_HUD() 
+{
+
+}
+
+void AMOBA_HUD::BeginPlay()
+{
+
+}
