@@ -14,7 +14,7 @@ public:
 	void SetHealth(float CurrentHealth, float MaxHealth);
 	void SetEnergy(float CurrentEnergy, float MaxEnergy);
 
-	// Link to the widget to dispplay the progress bar
+	// Link to the widget to display the progress bar
 
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	class UProgressBar* HealthBar;
