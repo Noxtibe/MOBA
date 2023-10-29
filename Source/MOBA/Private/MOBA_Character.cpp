@@ -31,7 +31,6 @@ AMOBA_Character::AMOBA_Character()
 	AbilityThreeEyedCrow = CreateDefaultSubobject <UAbility_ThreeEyedCrow>(TEXT("Three-Eyed Crow"));
 	AbilityVengefulRaven = CreateDefaultSubobject <UAbility_VengefulRaven>(TEXT("Vengeful Raven"));
 
-	CooldownTimers.Add(AbilityAutoAttack, FTimerHandle());
 
 	// Tick for pawn
 	PrimaryActorTick.bCanEverTick = true;
@@ -65,62 +64,6 @@ void AMOBA_Character::EndPlay(const EEndPlayReason::Type EndPlayReason)
 void AMOBA_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
-
-bool AMOBA_Character::IsAbilityReady(UAbility* Ability)
-{
-	if (Ability && CooldownTimers.Contains(Ability))
-	{
-		return !CooldownTimers[Ability].IsValid();
-	}
-
-	return false;
-}
-
-void AMOBA_Character::ActivateAbility(UAbility* Ability)
-{
-	if (Ability && IsAbilityReady(Ability))
-	{
-		Ability->Activate();
-		StartAbilityCooldown(Ability);
-	}
-}
-
-void AMOBA_Character::HandleCooldowns()
-{
-	for (auto& Entry : CooldownTimers)
-	{
-		if (Entry.Value.IsValid() && GetWorldTimerManager().GetTimerRemaining(Entry.Value) <= 0.0f)
-		{
-			Entry.Value.Invalidate();
-		}
-	}
-}
-
-void AMOBA_Character::StartAbilityCooldown(UAbility* Ability)
-{
-	if (Ability)
-	{
-		FTimerHandle& TimerHandle = CooldownTimers[Ability];
-		if (!TimerHandle.IsValid())
-		{
-			// Obtenez le temps de recharge spécifique à la compétence ici
-			float CooldownTime = 0.0f;
-
-			if (Ability == AbilityAutoAttack)
-			{
-				CooldownTime = AbilityAutoAttack->GetCooldownTime();
-			}
-			/*else if (Ability == AbilityFeatherOfRedemption)
-			{
-				CooldownTime = AbilityFeatherOfRedemption->GetCooldownTime();
-			}*/
-			// Ajoutez des vérifications pour les autres compétences ici
-
-			// Ensuite, utilisez le temps de recharge obtenu
-			GetWorldTimerManager().SetTimer(TimerHandle, this, &AMOBA_Character::HandleCooldowns, CooldownTime, false);
-		}
-	}
 }
 
 void AMOBA_Character::Move(const FInputActionValue& Value)

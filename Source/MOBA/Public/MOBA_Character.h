@@ -79,20 +79,4 @@ private:
 
     UPROPERTY()
     class UMOBA_DefaultWidget* PlayerHUD;
-
-    // Map pour stocker les gestionnaires de temps de recharge des compétences
-    UPROPERTY()
-    TMap<UAbility*, FTimerHandle> CooldownTimers; 
-
-    // Fonction pour vérifier si une compétence est prête à être activée
-    bool IsAbilityReady(UAbility* Ability);
-
-    // Fonction pour activer une compétence
-    void ActivateAbility(UAbility* Ability);
-
-    // Fonction pour gérer le temps de recharge des compétences
-    void HandleCooldowns();
-
-    // Fonction pour commencer le temps de recharge d'une compétence
-    void StartAbilityCooldown(UAbility* Ability);
 };

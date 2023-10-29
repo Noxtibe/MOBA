@@ -14,20 +14,4 @@ public:
 
 	virtual void Activate() override;
 
-	bool IsReadyToActivate();
-	void StartCooldown();
-
-	// Ajoutez une fonction pour récupérer le temps de recharge
-	UFUNCTION(BlueprintCallable, Category = "Ability")
-	float GetCooldownTime() const;
-
-private:
-
-	bool bIsCasting;
-	bool bIsOnCooldown;
-
-	// Fonction de rappel pour réinitialiser le temps de recharge
-	void ResetCooldown();
-	
-	FTimerHandle TimerHandle_ResetCooldown; // Déclaration de TimerHandle_ResetCooldown
 };
