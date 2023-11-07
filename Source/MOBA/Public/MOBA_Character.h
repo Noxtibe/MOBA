@@ -71,12 +71,4 @@ public:
     void Capacity2();
     void Capacity3();
     void Capacity4();
-
-private:
-
-    UPROPERTY(EditAnywhere)
-    TSubclassOf<class UMOBA_DefaultWidget> PlayerHUDClass;
-
-    UPROPERTY()
-    class UMOBA_DefaultWidget* PlayerHUD;
 };

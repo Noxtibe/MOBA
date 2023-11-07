@@ -14,8 +14,4 @@ public :
 	AMOBA_HUD();
 
 	virtual void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<class UMOBA_DefaultWidget> PlayerHUDClass;
-
 };
